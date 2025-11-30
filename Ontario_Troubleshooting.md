@@ -7,7 +7,8 @@
 - "Skip Drawing" shader compilation is defaulted
 - A pre-made .uidcache file has been included for both Offline Launcher.dol and Netplay launcher.dol
 
-When starting the game the first time you'll have to wait for Dolphin to fully compile the shaders, however it is worth it as it will **massiveley** deduce stutters, and then never has to be done again! Even on lower end hardware my tests have shown at **MOST** compiling shaders could take 2 minutes, but most of your PC's will handle it much quicker.
+When starting the game the first time you'll have to wait for Dolphin to fully compile the shaders, however it is worth it as it will **massiveley** deduce stutters, and then never has to be done again *(unless you change gfx backends)*! 
+Even on lower end hardware my tests have shown at **MOST** compiling shaders could take 2 minutes, but most of your PC's will handle it much quicker.
 
 .
 
