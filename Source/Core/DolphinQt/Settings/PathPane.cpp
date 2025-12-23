@@ -184,18 +184,13 @@ QGridLayout* PathPane::MakePathsLayout()
   layout->addWidget(m_game_edit, 0, 1);
   layout->addWidget(game_open, 0, 2);
 
-  m_launcher_edit = new QLineEdit(QString::fromStdString(File::GetUserPath(D_LAUNCHERS_IDX)));
-  connect(m_launcher_edit, &QLineEdit::editingFinished, [this] {
-    Config::SetBase(Config::MAIN_LAUNCHER_PATH, m_launcher_edit->text().toStdString());
-  });
-  connect(&Settings::Instance(), &Settings::LauncherPathChanged, this,
-          [this](const QString& path) { m_game_edit->setText(path); });
+  m_launcher_edit = new ConfigUserPath(D_LAUNCHERS_IDX, Config::MAIN_LAUNCHER_PATH);
   QPushButton* launcher_open = new NonDefaultQPushButton(QStringLiteral("..."));
   connect(launcher_open, &QPushButton::clicked, this, &PathPane::BrowseLauncher);
   layout->addWidget(new QLabel(tr("Launcher Path:")), 1, 0);
   layout->addWidget(m_launcher_edit, 1, 1);
   layout->addWidget(launcher_open, 1, 2);
-
+  
   m_nand_edit = new ConfigUserPath(D_WIIROOT_IDX, Config::MAIN_FS_PATH);
   QPushButton* nand_open = new NonDefaultQPushButton(QStringLiteral("..."));
   connect(nand_open, &QPushButton::clicked, this, &PathPane::BrowseWiiNAND);

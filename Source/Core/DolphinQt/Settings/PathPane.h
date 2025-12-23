@@ -35,7 +35,7 @@ private:
   ConfigText* m_nand_edit;
   ConfigText* m_dump_edit;
   ConfigText* m_load_edit;
-  QLineEdit* m_launcher_edit;
+  ConfigText* m_launcher_edit;
   ConfigText* m_resource_pack_edit;
   ConfigText* m_wfs_edit;
 
