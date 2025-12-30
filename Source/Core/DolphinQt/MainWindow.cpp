@@ -1382,7 +1382,7 @@ void MainWindow::ShowUpdateDialog()
 
   // Make the GET request
   auto response = httpRequest.Get(
-      "https://api.github.com/repos/FlowerGirlSmug/Project-Plus-Dolphin-Ontario/releases");
+      "https://api.github.com/repos/FlowerGirlSmug/Project-Plus-Dolphin/releases");
 
   if (!response)
   {
@@ -1424,7 +1424,7 @@ void MainWindow::CheckForUpdatesAuto()
 {
   Common::HttpRequest httpRequest;
   auto response = httpRequest.Get(
-      "https://api.github.com/repos/FlowerGirlSmug/Project-Plus-Dolphin-Ontario/releases");
+      "https://api.github.com/repos/FlowerGirlSmug/Project-Plus-Dolphin/releases");
 
   if (!response)
     return;

@@ -653,7 +653,7 @@ void MenuBar::AddHelpMenu()
   });
   QAction* github = help_menu->addAction(tr("&GitHub Repository"));
   connect(github, &QAction::triggered, this, [] {
-    QDesktopServices::openUrl(QUrl(QStringLiteral("https://github.com/FlowerGirlSmug/Project-Plus-Dolphin-Ontario")));
+    QDesktopServices::openUrl(QUrl(QStringLiteral("https://github.com/FlowerGirlSmug/Project-Plus-Dolphin")));
   });
 
 #ifndef __APPLE__
