@@ -9,7 +9,7 @@
 
 namespace Common
 {
-#define EMULATOR_NAME "Ontario Project+"
+#define EMULATOR_NAME "ZAMNNNNNN"
 
 #ifdef _DEBUG
 #define BUILD_TYPE_STR "Debug "
