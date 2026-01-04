@@ -1365,13 +1365,13 @@ void MainWindow::ShowAboutDialog()
 
 // P+ change: New updater; credit to RainbowTabitha and the Mario Party Netplay team for the base code!
 
-static QJsonObject GetLatestONRelease(const QJsonArray& releases)
+static QJsonObject GetLatestONPMRelease(const QJsonArray& releases)
 {
   for (const QJsonValue& value : releases)
   {
     QJsonObject release = value.toObject();
     QString tag = release.value(QStringLiteral("tag_name")).toString();
-    if (tag.startsWith(QStringLiteral ("ON")))
+    if (tag.startsWith(QStringLiteral ("ONPM")))
       return release;
   }
   return QJsonObject();  // none found
@@ -1397,21 +1397,21 @@ void MainWindow::ShowUpdateDialog()
     return;
 
   QJsonArray releases = jsonDoc.array();
-  QJsonObject latestON = GetLatestONRelease(releases);
+  QJsonObject latestONPM = GetLatestONPMRelease(releases);
 
-  if (latestON.isEmpty())
+  if (latestONPM.isEmpty())
   {
-    QMessageBox::information(this, tr("Info"), tr("No ON releases found."));
+    QMessageBox::information(this, tr("Info"), tr("No ONPM releases found."));
     return;
   }
 
   QString currentVersion = QString::fromStdString(SCM_DESC_STR);
-  QString latestVersion = latestON.value(QStringLiteral("tag_name")).toString();
+  QString latestVersion = latestONPM.value(QStringLiteral("tag_name")).toString();
 
   if (currentVersion != latestVersion)
   {
     bool forced = false;
-    UserInterface::Dialog::UpdateDialog updater(this, latestON, forced);
+    UserInterface::Dialog::UpdateDialog updater(this, latestONPM, forced);
     updater.exec();
   }
   else
@@ -1435,17 +1435,17 @@ void MainWindow::CheckForUpdatesAuto()
   if (!jsonDoc.isArray())
     return;
 
-  QJsonObject latestON = GetLatestONRelease(jsonDoc.array());
-  if (latestON.isEmpty())
+  QJsonObject latestONPM = GetLatestONPMRelease(jsonDoc.array());
+  if (latestONPM.isEmpty())
     return;
 
   QString currentVersion = QString::fromStdString(SCM_DESC_STR);
-  QString latestVersion = latestON.value(QStringLiteral("tag_name")).toString();
+  QString latestVersion = latestONPM.value(QStringLiteral("tag_name")).toString();
 
   if (currentVersion != latestVersion)
   {
     bool forced = false;
-    UserInterface::Dialog::UpdateDialog updater(this, latestON, forced);
+    UserInterface::Dialog::UpdateDialog updater(this, latestONPM, forced);
     updater.exec();
   }
 }
